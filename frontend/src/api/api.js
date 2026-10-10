@@ -27,7 +27,7 @@ const getMessages = async () => {
     const res = await apiInstance.get("/messages")
     return res
 }
-const sendMessage = async () => {
+const sendMessage = async (message) => {
     const res = await apiInstance.post("/messages", message)
     return res
 }

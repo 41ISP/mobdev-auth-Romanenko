@@ -3,7 +3,7 @@ import Button from './Button'
 import TextArea from './TextArea'
 
 const MessageField = () => {
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const message = {
             content: e.target.content.value
