@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useUserStore } from "../store/useUserStore";
 const apiInstance = axios.create({
-    baseURL: "https://api.kitek-pg.ru/api/feedback/",
+    baseURL: "https://refactored-robot-jj6r7v646pjv3pp6p-3001.app.github.dev/api",
     headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
@@ -31,10 +31,43 @@ const sendMessage = async (message) => {
     const res = await apiInstance.post("/messages", message)
     return res
 }
+const authMe = async () => {
+const res = await apiInstance.get("/auth/me")
+return res
+
+}
+const getMyMessages = async () => {
+const res = await apiInstance.get(`/my-messages`)
+return res
+}
+const deleteMessage = async (id) => {
+const res = await apiInstance.delete(`/messages/${id}`)
+return res
+}
+const likeMessage = async (id) => {
+const res = await apiInstance.post(`/messages/${id}/like`)
+return res
+}
+const reportMessage = async (id) => {
+const res = await apiInstance.post(`/messages/${id}/report`)
+return res
+}
+const getStats = async () => {
+const res = await apiInstance.post(`/stats`)
+return res
+}
+
+
 
 export const api = {
     registerUser,
     loginUser,
     getMessages,
-    sendMessage
+    sendMessage,
+    authMe,
+    getMyMessages,
+    deleteMessage,
+    likeMessage,
+    reportMessage,
+    getStats 
 }
